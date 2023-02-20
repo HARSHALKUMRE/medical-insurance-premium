@@ -1,4 +1,4 @@
-from .constant import TIMESTAMP
+from .configuration import TIMESTAMP
 import logging
 import os,sys
 
