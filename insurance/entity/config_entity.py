@@ -37,6 +37,10 @@ class DataIngestionConfig:
             raise InsuranceException(e,sys) 
 
 
-
 class DataValidationConfig:
-    pass
+    def __init(self, training_pipeline_config: TraningPipelineConfig):
+        try:
+            self.data_validation_dir = os.path.join(training_pipeline_config.artifact_dir, "data_validation")
+            self.report_file_path = os.path.join(self.data_validation_dir, "report.yaml") # yaml, json, csv
+        except Exception as e:
+            raise InsuranceException(e, sys)
