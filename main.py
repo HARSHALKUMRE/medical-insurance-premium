@@ -3,6 +3,7 @@ from insurance.exception import InsuranceException
 import os, sys
 from insurance.utils import get_collection_as_dataframe
 from insurance.entity.config_entity import DataIngestionConfig
+from insurance.entity import config_entity
 
 #def test_logger_and_exception():
     #try:
