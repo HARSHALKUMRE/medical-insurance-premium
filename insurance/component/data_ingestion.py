@@ -68,5 +68,3 @@ class DataIngestion:
             raise InsuranceException(error_message=e, error_detail=sys)
 
     
-    def __del__(self):
-        logging.info(f"{'=' * 20}Data Ingestion log completed.{'=' * 20} \n\n")
