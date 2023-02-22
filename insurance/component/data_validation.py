@@ -18,7 +18,7 @@ class DataValidation:
                     data_validation_config:config_entity.DataValidationConfig,
                     data_ingestion_artifact:artifact_entity.DataIngestionArtifact):
         try:
-            logging.info(f"{'='*20} Data Validation {'='*20}")
+            logging.info(f"{'='*20} Data validation log started {'='*20}")
             self.data_validation_config = data_validation_config
             self.data_ingestion_artifact=data_ingestion_artifact
             self.validation_error=dict()
@@ -152,3 +152,7 @@ class DataValidation:
             return data_validation_artifact
         except Exception as e:
             raise InsuranceException(e, sys)
+
+
+    def __del__(self):
+        logging.info(f"{'=' * 20}Data validation log completed.{'=' * 20} \n\n")
