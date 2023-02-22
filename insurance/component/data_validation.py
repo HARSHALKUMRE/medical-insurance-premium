@@ -154,5 +154,4 @@ class DataValidation:
             raise InsuranceException(e, sys)
 
 
-    def __del__(self):
-        logging.info(f"{'=' * 20}Data validation log completed.{'=' * 20} \n\n")
+    
