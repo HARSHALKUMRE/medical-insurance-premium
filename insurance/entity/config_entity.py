@@ -9,6 +9,7 @@ TRAIN_FILE_NAME = "train.csv"
 TEST_FILE_NAME = "test.csv"
 TRANSFORMER_OBJECT_FILE_NAME = "transformer.pkl"
 TARGET_ENCODER_OBJECT_FILE_NAME = "target_encoder.pkl"
+MODEL_FILE_NAME = "model.pkl"
 
 class TrainingPipelineConfig:
     def __init__(self):
@@ -57,5 +58,23 @@ class DataTransformationConfig:
             self.transformed_train_path = os.path.join(self.data_transformation_dir, "transformed", TRAIN_FILE_NAME.replace("csv", "ngz"))
             self.transformed_test_path = os.path.join(self.data_transformation_dir, "transformed", TEST_FILE_NAME.replace("csv", "ngz"))
             self.target_encoder_path = os.path.join(self.data_transformation_dir, "target_encoder", TARGET_ENCODER_OBJECT_FILE_NAME)
+        except Exception as e:
+            raise InsuranceException(e, sys)
+
+class ModelTrainerConfig:
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        try:
+            self.model_trainer_dir = os.path.join(training_pipeline_config.artifact_dir, "model_trainer")
+            self.model_path = os.path.join(self.model_trainer_dir, "model", MODEL_FILE_NAME)
+            self.excepted_score = 0.7
+            self.overfitting_threshold = 0.3 # overfitting score
+        except Exception as e:
+            raise InsuranceException(e, sys)
+
+
+class ModelEvaluationConfig:
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        try:
+            self.change_threshold = 0.01
         except Exception as e:
             raise InsuranceException(e, sys)
