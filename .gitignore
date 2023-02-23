@@ -130,3 +130,6 @@ dmypy.json
 
 # artifact folder
 artifact/* 
+
+# saved models
+saved_models/*
